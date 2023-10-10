@@ -1,7 +1,8 @@
 import Link from 'next/link'
 import styles from './Home.module.css'
+import { IHomeUIProps } from './Home.types'
 
-export default function HomePageUI() {
+export default function HomePageUI(props:IHomeUIProps) {
     return (
         <div className={styles.wrapper}>
             <div className={styles.header}>
@@ -32,9 +33,7 @@ export default function HomePageUI() {
                         <p className={styles.paragraph}>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                         </p>
-                        <Link href = "/register">
-                            <button  className={styles.btnText}>Go Login &rarr;</button>
-                        </Link>
+                            <button onClick={props.onClickLogin} className={styles.btnText}>Go Login &rarr;</button>
                         
                     </div>
                     <div className={styles.col_1_of_2}>

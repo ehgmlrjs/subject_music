@@ -5,7 +5,7 @@ async function signup(email, password, nickName) {
 
     try{
         co = await database.getConnection();
-        const query = `INSERT INTO leekc.user (nickName, email, password) VALUES (?, ?, ?)`;
+        const query = `INSERT INTO laproject.user (nickName, email, password) VALUES (?, ?, ?)`;
         const values = [nickName, email, password];
 
         const [result] = await co.execute(query, values);
@@ -21,7 +21,7 @@ async function emailCheck (email){
 
     try {
         co = await database.getConnection();
-        const query = `SELECT email FROM leekc.user WHERE email=?`;
+        const query = `SELECT email FROM laproject.user WHERE email=?`;
         const values = [email];
 
         const [result] = await co.execute(query,values);
@@ -41,7 +41,7 @@ async function nicknameCheck (nickName){
 
     try {
         co = await database.getConnection();
-        const query = `SELECT nickName FROM leekc.user WHERE nickName=?`;
+        const query = `SELECT nickName FROM laproject.user WHERE nickName=?`;
         const values = [nickName];
 
         const [result] = await co.execute(query,values);
