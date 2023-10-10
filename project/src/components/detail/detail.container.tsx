@@ -6,7 +6,7 @@ export default function DetailPage():JSX.Element {
 
     const onClickRouter = ()=> {
         console.log('gggg')
-        router.push('/register')
+        router.push('/')
     }
 
     return (

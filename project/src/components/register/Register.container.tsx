@@ -68,8 +68,9 @@ export default function RegisterPage():JSX.Element {
             });
             if (response.status === 200) {
                 console.log(response)
-                // router.push('/')
+                
                 alert('로그인 성공')
+                router.push('/')
             }else if(response.status === 401) {
                 console.log('존재하지 않은 로그인 정보입니다.')
             }else {
