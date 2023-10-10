@@ -1,0 +1,121 @@
+.containers {
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper {
+    width: 100%;
+    height: 100px;
+    background-color: black; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    display: flex;
+    color: white;
+    align-items: center;
+    font-size: 30px;
+}
+
+
+.wrapperBottom{
+    width: 100%;
+    background-color: black; 
+    position: fixed;
+    top: 100px;
+    left: 0;
+    z-index: 999;
+    display: flex;
+    color: white;
+    align-items: center;
+    font-size: 22px;
+    display: none;
+}
+
+@media (max-width:600px) {
+    .wrapperBottom{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.logoContainer {
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+@media (max-width:600px){
+    .logoContainer{
+        margin-left: 10%;
+    }
+}
+
+.headerLogo {
+    height: 35px;
+}
+
+.menuContainer{
+    width:70%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+@media (max-width:1200px) {
+    .menuContainer{
+        font-size: 70%;
+    }
+}
+
+@media (max-width:900px) {
+    .menuContainer{
+        font-size: 55%;
+    }
+}
+
+@media (max-width:600px) {
+    .menuContainer{
+        display: none;
+    }
+}
+
+.menuContent {
+    cursor: pointer;
+}
+
+
+
+.loginContainer {
+    width: 20%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+@media (max-width:1200px){
+    .loginContainer{
+        font-size: 70%
+    }
+}
+
+@media (max-width:900px){
+    .loginContainer{
+        font-size: 55%
+    }
+}
+
+@media (max-width:600px){
+    .loginContainer{
+        margin-left: 55%;
+    }
+}
+
+.loginContent {
+    cursor: pointer;
+}
+
+.bottomContent {
+    margin-bottom: 5px;
+    cursor: pointer;
+}
