@@ -6,7 +6,7 @@ export default function HeaderPageUI(props:IHeaderUIProps):JSX.Element {
         <div className={styles.containers}>
             <div className={styles.wrapper}>
                 <div onClick={props.onClickHome} className={styles.logoContainer}>
-                    <img src="img/home/logo-white.png" alt='Logo' className={styles.headerLogo} />
+                    <img src="/img/home/logo-white.png" alt='Logo' className={styles.headerLogo} />
                 </div>
                 <div className={styles.menuContainer}>
                     <div onClick = {props.onClickChart} className={styles.menuContent}>CHART</div>
