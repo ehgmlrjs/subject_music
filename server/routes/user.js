@@ -1,23 +1,38 @@
 const express = require('express');
 const session = require('express-session');
+const {Sequelize} = require('sequelize')
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const {signup, isCheck} = require('../models/join');
 const {loginCheck} = require('../models/logincheck');
 const {signupCheck} = require('../controllers/joincheck');
 
 const router = express.Router();
 
+
+const sequelize = new Sequelize('laproject', 'root', 'mysql', {
+  host: 'localhost',
+  dialect: 'mysql',
+});
+
+const sessionStore = new SequelizeStore({
+  db: sequelize,
+});
+
 // 세션 미들웨어 추가
 router.use(session({
   secret: '1023ldde',
   resave: false,
   saveUninitialized: true,
+  store: sessionStore,
   cookie: {
     // 세션 쿠키 속성을 구성
-    maxAge: 3600000, // 세션이 1시간 후에 만료
+    maxAge: 360000, // 세션이 1시간 후에 만료
     secure: false, // HTTPS만 사용하는 경우 true로 설정
     httpOnly: true, // 클라이언트 측 JavaScript 액세스 방지
   },
 }));
+
+sessionStore.sync();
 
 router.post('/signup',  async (req, res, next) => {
     try {
