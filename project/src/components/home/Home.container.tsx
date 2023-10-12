@@ -5,6 +5,7 @@ export default function HomePage():JSX.Element {
     const router = useRouter();
 
     const onClickLogin = ()=> {
+        console.log('qweqwe')
         router.push('/register')
     }
 
