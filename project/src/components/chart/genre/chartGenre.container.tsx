@@ -11,9 +11,14 @@ export default function ChartGenrePage() {
         setGenre(router.asPath.replace('/chart/',''))
     }, [])
 
+    const handlePageChange = (page:number) => {
+        console.log(page)
+    }
+
     return (
         <ChartGenrePageUI
             genre = {genre}
+            handlePageChange = {handlePageChange}
          />
     )
 }
