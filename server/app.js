@@ -1,6 +1,7 @@
 const express = require('express');
 
 const userRouter = require('./routes/user');
+const songRouter = require('./routes/song');
 
 const app = express();
 
@@ -11,6 +12,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/user', userRouter);
+app.use('/song', songRouter);
 
 app.use((err, req, res, next) => {
     console.error(err.stack);
