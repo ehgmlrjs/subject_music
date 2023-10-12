@@ -5,3 +5,13 @@ export interface IChartDetailProps {
         img : string;
     };
 }
+
+export interface IChartDetailUIProps {
+    data: {
+        index : string;
+        title : string;
+        img : string;
+    };
+
+    handleImageClick : () => void;
+}

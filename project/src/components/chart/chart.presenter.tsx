@@ -1,9 +1,10 @@
-
-import { DUMMY_DATA, HOT_DATA, POP_DATA } from '../data/chart/chart'
-import styles from './chart.module.css'
+import Link from 'next/link';
+import { DUMMY_DATA, HOT_DATA, POP_DATA } from '../data/chart/chart';
+import styles from './chart.module.css';
+import { ICartPageUIProps } from './chart.types';
 import ChartDetailPage from './detail/chartDetail.container';
 
-export default function ChartPageUI() {
+export default function ChartPageUI(props:ICartPageUIProps) {
     return (
         <div className={styles.body}>
             <div className={styles.wrapper}>
@@ -17,6 +18,7 @@ export default function ChartPageUI() {
                                 return (
                                     <ChartDetailPage
                                         data = {data}
+                                        key={data.index}
                                      />
                                 )
                             })}
@@ -46,9 +48,9 @@ export default function ChartPageUI() {
                                     )
                                 })}
                             </div>
-                            <div className={styles.hotPlus}>
+                            <Link href="/chart/hot" className={styles.hotPlus}>
                                 더보기
-                            </div>
+                            </Link>
                         </div>
                         <div className={styles.hotBox}>
                             <div className={styles.hotTitle}>
@@ -73,9 +75,9 @@ export default function ChartPageUI() {
                                     )
                                 })}
                             </div>
-                            <div className={styles.hotPlus}>
+                            <Link href="/chart/pop" className={styles.hotPlus}>
                                 더보기
-                            </div>
+                            </Link>
                         </div>
                     </div>
                 </div>

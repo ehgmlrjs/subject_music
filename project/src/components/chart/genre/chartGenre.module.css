@@ -1,0 +1,27 @@
+.body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to bottom,#ffffff 30%,#eeaeca);
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    height: 95vh;
+    width: 50%;
+    margin-top: 150px;
+    border-radius: 5%;
+    background: linear-gradient(to bottom right, rgba(148,187,233,1) 0%, rgba(238,174,202,1) 100%);
+    padding: 5%;
+    font-size: 40px;
+}
+
+.footer {
+    margin-top: 100px;
+    width: 100%;
+    height: 100px;
+    background-image: linear-gradient(to bottom,#eeaeca 30%,#ffffff);
+}
