@@ -11,7 +11,7 @@ router.get('/:name', async (req, res, next) => {
         const type = transKo(req.params.name);
         console.log(type)
         co = await database.getConnection();
-        const query = `SELECT * FROM new_song WHERE 장르 like ? UNION SELECT * FROM steady_song WHERE 장르 like ?`;
+        const query = `SELECT * FROM new_song WHERE genre like ? UNION SELECT * FROM steady_song WHERE genre like ?`;
         const values = [`%${type}%`,`%${type}%`];
 
         const [result] = await co.execute(query, values);
