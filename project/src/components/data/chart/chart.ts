@@ -33,7 +33,7 @@ export const DUMMY_DATA: ChartItem[] = [
         img : '/img/chart/hippop.jpg'
     },{
         index : '3',
-        title : 'RB',
+        title : 'R&B',
         img : '/img/chart/r&b.jpg'
     },{
         index : '4',

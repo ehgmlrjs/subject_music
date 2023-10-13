@@ -16,6 +16,9 @@ function transKo(song){
         case 'Rock':
             song_name = '록';
             break;
+        case 'RB':
+            song_name = 'R&B';
+            break;
         default:
             song_name = song
     }
