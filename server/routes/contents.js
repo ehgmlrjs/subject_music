@@ -2,18 +2,15 @@ const express = require('express');
 const router = express.Router();
 const database = require('../db/database.config');
 
-const transKo = require('../models/transKo');
-
-
-router.get('/:name', async (req, res, next) => {
+router.get('/:index', async (req, res, next) => {
     let co;
     try {
-        const di = {'pop':'global_today','top':'top100'}
-        const type = transKo(req.params.name);
+        const index = req.params.index;
         co = await database.getConnection();
-        const query = `SELECT * FROM ${di[type]}`;
+        const query = 'SELECT DISTINCT * FROM song WHERE `Index` = ?';
+        const values = [index];
 
-        const [result] = await co.execute(query);
+        const [result] = await co.execute(query, values);
         co.release();
         res.send(result)
         return result;
