@@ -1,20 +1,21 @@
 import styles from './contents.module.css'
 import {HeartOutlined} from '@ant-design/icons'
+import { IContentsPageUIProps } from './contents.types'
 
-export default function ContentsPageUI() {
+export default function ContentsPageUI(props:IContentsPageUIProps):JSX.Element {
     return(
         <div className={styles.body}>
             <div className={styles.wrapper}>
                 <div className={styles.infoContainer}>
                         <div className={styles.imgBox}>
-                            <img className={styles.songImg} src='https://cdnimg.melon.co.kr/cm2/album/images/111/06/209/11106209_20221120120732_500.jpg?0833292075e8039ac7d88a529d0a535e/melon/resize/282/quality/80/optimize' alt='songImg' />
+                            <img className={styles.songImg} src={props.inputData[0]?.image} alt='songImg' />
                         </div>
                         <div className={styles.songInfoBox}>
                             <div className={styles.songTitle}>
-                                Dream
+                                {props.inputData[0]?.name}
                             </div>
                             <div className={styles.author}>
-                                정국
+                                {props.inputData[0]?.singer}
                             </div>
                             <div className={styles.infoBox}>
                                 <div className={styles.infoRow}>
@@ -22,7 +23,7 @@ export default function ContentsPageUI() {
                                         앨범
                                     </div>
                                     <div className={styles.info}>
-                                    Dreamers [Music from the FIFA World Cup Qatar 2022 Official Soundtrack]
+                                        {props.inputData[0]?.album}
                                     </div>
                                 </div>
                                 <div className={styles.infoRow}>
@@ -30,7 +31,7 @@ export default function ContentsPageUI() {
                                         발매일
                                     </div>
                                     <div className={styles.info}>
-                                        2022-11-20
+                                        {props.inputData[0]?.day}
                                     </div>
                                 </div>
                                 <div className={styles.infoRow}>
@@ -38,7 +39,7 @@ export default function ContentsPageUI() {
                                         장르
                                     </div>
                                     <div className={styles.info}>
-                                        POP
+                                        {props.inputData[0]?.genre}
                                     </div>
                                 </div>
                                 <div className={styles.infoRow}>
@@ -59,53 +60,7 @@ export default function ContentsPageUI() {
                         가사
                     </div>
                     <div className = {styles.lyrics}>
-                        الأ هو لا دان
-                        الأ هو لا دان
-                        (Oh RedOne)
-                        الأ هو لا دان
-                        الأ هو لا دان
-                        Look who we are we are the dreamers
-                        We make it happen 'cause we believe it
-                        Look who we are we are the dreamers
-                        We make it happen 'cause we can see it
-                        Here's to the ones that keep the passion
-                        Respect oh yeah
-                        Here's to the ones that can imagine
-                        Respect oh yeah
-                        الأ هو لا دان
-                        الأ هو لا دان
-                        الأ هو لا دان
-                        الأ هو لا دان
-                        Gather 'round now look at me (هاييا هاييا)
-                        Respect the love the only way (هاييا هاييا)
-                        If you wanna come come with me (هاييا هاييا)
-                        The door is open now every day (هاييا هاييا)
-                        This one plus two rendezvous all invited
-                        This what we do how we do
-                        Look who we are we are the dreamers
-                        We make it happen 'cause we believe it
-                        Look who we are we are the dreamers
-                        We make it happen 'cause we can see it
-                        Here's to the ones that keep the passion
-                        Respect oh yeah
-                        Here's to the ones that can imagine
-                        Respect oh yeah
-                        الأ هو لا دان
-                        الأ هو لا دان
-                        الأ هو لا دان
-                        الأ هو لا دان
-                        Look who we are we are the dreamers
-                        We make it happen 'cause we believe it
-                        Look who we are we are the dreamers
-                        We make it happen 'cause we can see it
-                        Here's to the ones that keep the passion
-                        Respect oh yeah
-                        Here's to the ones that can imagine
-                        Respect oh yeah
-                        الأ هو لا دان
-                        الأ هو لا دان
-                        الأ هو لا دان
-                        الأ هو لا دان
+                    {props.inputData[0]?.lyrics}
                     </div>
                 </div>
                 <div className={styles.boardContainer}>

@@ -29,7 +29,6 @@ export default function ChartGenrePage() {
     useEffect(() => {
         const tmp = songData.slice(pagenation*10 - 10, pagenation*10-1);
         setNowData(tmp);
-        console.log(nowData)
     }, [pagenation]);
 
     const handlePageChange = (page:number) => {
