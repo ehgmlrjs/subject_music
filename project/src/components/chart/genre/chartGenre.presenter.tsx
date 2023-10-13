@@ -45,7 +45,7 @@ export default function ChartGenrePageUI(props:IChartGenrePageProps) {
                                     Dreamers [Music from the FIFA World Cup Qatar 2022 Official Soundtrack]
                                 </div>
                                 <div className={styles.playIconBox}>
-                                    <UnorderedListOutlined className={styles.playIcon} />
+                                    <UnorderedListOutlined onClick={props.onClickIcon}  className={styles.playIcon} />
                                 </div>
                             </div>
                         </div>
@@ -58,9 +58,6 @@ export default function ChartGenrePageUI(props:IChartGenrePageProps) {
                         onChange={props.handlePageChange} 
                     />
                 </div>
-            </div>
-            <div className={styles.footer}>
-                asdas
             </div>
         </div>
     )

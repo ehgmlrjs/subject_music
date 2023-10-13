@@ -1,0 +1,135 @@
+.body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to bottom,#ffffff 30%,#eeaeca);
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-top: 150px;
+    margin-bottom: 100px;
+    width: 50%;
+    border-radius: 10px;
+    padding: 50px;
+    gap: 20px;
+    color: white;
+    background: linear-gradient(to bottom right, rgba(148,187,233,1) 0%, rgba(238,174,202,1) 100%);
+}
+
+.infoContainer {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    border: 1px solid white;
+}
+
+.imgBox{
+    overflow: hidden;
+}
+
+.songImg {
+    width: 100%;
+    height: 100%;
+}
+
+.songInfoBox{
+    padding: 7%;
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+}
+
+.songTitle {
+    font-size: 30px;
+}
+
+.author {
+    font-size: 18px;
+}
+
+.infoBox {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.infoRow {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+}
+
+.info {
+    white-space: nowrap;   
+    overflow: hidden;        
+    text-overflow: ellipsis;
+}
+
+.like {
+    cursor: pointer;
+}
+
+.lyricsContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.lyricsTitle {
+    font-size: 30px;
+    border-bottom: 1px solid white;
+    margin-bottom: 20px;
+    padding: 20px 0;
+}
+
+.boardContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.boardTopContainer {
+    display: flex;
+    height: 100px;
+    gap: 5%;
+    margin-bottom: 10px;
+}
+
+.boardInput {
+    width: 70%;
+    height: 100%;
+    border: 1px solid lightgray;
+}
+
+.boardSubmitButton {
+    width: 20%;
+    height: 100%;
+    font-size: 30px;
+    color: white;
+    border: 1px solid lightgray;
+    font-weight: bold;
+    cursor: pointer;
+    background: linear-gradient(to bottom right, rgba(148,187,233,1) 0%, rgba(238,174,202,1) 100%);
+}
+
+.boardBottomContainer {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid white;
+    padding: 10px;
+}
+
+.boardContentContainer {
+    display: flex;
+    border-bottom: 1px solid lightgray;
+    height: 50px;
+}
+
+.boardAuthor {
+    display: flex;
+    align-items: center;
+    width: 20%;
+}
+
+.boardContent {
+    width: 70%;
+}

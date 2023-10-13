@@ -8,6 +8,7 @@
 
 .wrapper {
     display: flex;
+    margin-bottom: 150px;
     flex-direction: column;
     color: white;
     height: 95vh;
@@ -134,12 +135,5 @@
     color: lightgreen;
     font-size: 20px;
     cursor: pointer;
-}
-
-.footer {
-    margin-top: 100px;
-    width: 100%;
-    height: 200px;
-    background-image: linear-gradient(to bottom,#eeaeca 30%,#ffffff);
 }
 

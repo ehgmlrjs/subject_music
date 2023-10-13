@@ -15,10 +15,15 @@ export default function ChartGenrePage() {
         console.log(page)
     }
 
+    const onClickIcon = () => {
+        router.push('/contents/tmp')
+    }
+
     return (
         <ChartGenrePageUI
             genre = {genre}
             handlePageChange = {handlePageChange}
+            onClickIcon = {onClickIcon}
          />
     )
 }
