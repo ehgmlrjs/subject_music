@@ -22,10 +22,6 @@ export default function ContentsPage() {
         console.log(inputData)
     },[])
 
-    useEffect(() => {
-        console.log(inputData); // 데이터가 업데이트될 때 실행
-    }, [inputData]);
-
     return (
         <ContentsPageUI
             inputData={inputData.length > 0 ? inputData : []}
