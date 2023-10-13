@@ -8,17 +8,26 @@ const transKo = require('../models/transKo');
 router.get('/:name', async (req, res, next) => {
     let co;
     try {
+        const di = { 'pop': 'global_today', 'Hot': 'top100' }
         const type = transKo(req.params.name);
-        console.log(type)
-        co = await database.getConnection();
-        const query = `SELECT * FROM new_song WHERE genre like ? UNION SELECT * FROM steady_song WHERE genre like ?`;
-        const values = [`%${type}%`,`%${type}%`];
+        if (type in di) {
+            co = await database.getConnection();
+            const query = `SELECT * FROM ${di[type]}`;
+    
+            const [result] = await co.execute(query);
+            co.release();
+            res.send(result)
+            return result;
+        } else {
+            co = await database.getConnection();
+            const query = `SELECT * FROM new_song WHERE genre like ? UNION SELECT * FROM steady_song WHERE genre like ?`;
+            const values = [`%${type}%`, `%${type}%`];
 
-        const [result] = await co.execute(query, values);
-        co.release();
-        res.send(result)
-        return result;
-
+            const [result] = await co.execute(query, values);
+            co.release();
+            res.send(result)
+            return result;
+        }
     } catch (error) {
         console.error(error);
         return res.status(500).json({
