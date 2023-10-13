@@ -1,29 +1,26 @@
 const express = require('express');
 const session = require('express-session');
-const {Sequelize} = require('sequelize')
-const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const MYSQLStore = require('express-mysql-session')(session);
 const {signup, isCheck} = require('../models/join');
 const {loginCheck} = require('../models/logincheck');
 const {signupCheck} = require('../controllers/joincheck');
+const isSession = require('../models/isSession');
 
 const router = express.Router();
 
-
-const sequelize = new Sequelize('laproject', 'root', 'mysql', {
-  host: 'localhost',
-  dialect: 'mysql',
-});
-
-const sessionStore = new SequelizeStore({
-  db: sequelize,
-});
 
 // 세션 미들웨어 추가
 router.use(session({
   secret: '1023ldde',
   resave: false,
   saveUninitialized: true,
-  store: sessionStore,
+  store: new MYSQLStore({
+    host:'localhost',
+    port:3306,
+    user:'root',
+    password:'mysql',
+    database:'laproject'
+  }),
   cookie: {
     // 세션 쿠키 속성을 구성
     maxAge: 360000, // 세션이 1시간 후에 만료
@@ -32,7 +29,6 @@ router.use(session({
   },
 }));
 
-sessionStore.sync();
 
 router.post('/signup',  async (req, res, next) => {
     try {
@@ -92,13 +88,13 @@ router.post('/signup',  async (req, res, next) => {
   router.post('/login', async (req, res, next) => {
     try{
       const {email, password} = req.body;
-
+      console.log(await isSession(email))
       // 사용자가 이미 인증되었는지 확인합니다 (세션이 존재하는 경우)
-      if(req.session.user) {
-        return res.status(400).json({
-          message: '이미 로그인되어 있습니다.'
-        });
-      }
+      // if(await isSession(email)) {
+      //   return res.status(201).json({
+      //     message: '이미 로그인되어 있습니다.'
+      //   });
+      // }
 
       // 로그인 유효성 검사
       const isValidLogin = await loginCheck(email, password); // 유효성 검사 false: 유효하지 않은 정보
@@ -111,8 +107,6 @@ router.post('/signup',  async (req, res, next) => {
 
       // 성공적인 로그인 후 세션에 사용자 정보를 저장
       req.session.user = email;
-
-      console.log(req.session)
 
       return res.status(200).json({
         message: '로그인 성공',
