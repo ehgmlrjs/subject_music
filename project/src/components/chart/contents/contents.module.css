@@ -26,6 +26,7 @@
 
 .imgBox{
     overflow: hidden;
+    padding: 0;
 }
 
 .songImg {
