@@ -41,13 +41,25 @@
     gap: 10%;
 }
 
+@media (max-width: 600px){
+    .chartContainerContent{
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+    }
+}
+
 .hotContainer {
     width: 100%;
     margin-top: 5%;
-    height: 600px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 5%;
+}
+
+@media (max-width: 600px) {
+    .hotContainer{
+        grid-template-columns: 1fr;
+    }
 }
 
 .hotBox {
@@ -64,6 +76,12 @@
     margin-bottom: 20px;
 }
 
+@media (max-width: 600px) {
+    .hotTitle {
+        font-size: 200%;
+    }
+}
+
 .hotContent {
     height: 80%;
     padding: 5%;
@@ -77,9 +95,16 @@
     display: grid;
     grid-template-columns: 2fr 3fr 2fr;
     align-items: center;
-    font-size: 20px;
+    font-size: 18px;
     color: #fff;
     border-bottom: 1px solid white;
+    padding-bottom: 20px;
+}
+
+@media (max-width:600px) {
+    .hotInner {
+        font-size: 15px;
+    }
 }
 
 .hotImgBox {
@@ -97,7 +122,22 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
+}
 
+@media (max-width:600px) {
+    .hotImgLine{
+        width: 40px;
+    }
+}
+
+.hotImg {
+    width: 100%;
+}
+
+@media (max-width:600px) {
+    .hotImg {
+        width: 80%;
+    }
 }
 
 .hotPlus {
@@ -107,4 +147,10 @@
     cursor: pointer;
     color: #ffffff;
     font-weight: bold;
+}
+
+@media (max-width:600px) {
+    .hotPlus {
+        font-size: 12px;
+    }
 }
