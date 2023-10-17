@@ -75,7 +75,7 @@ export default function ChartPageUI(props:ICartPageUIProps) {
                                     )
                                 })}
                             </div>
-                            <Link href="/chart/Pop" className={styles.hotPlus}>
+                            <Link href="/chart/pop" className={styles.hotPlus}>
                                 더보기
                             </Link>
                         </div>
