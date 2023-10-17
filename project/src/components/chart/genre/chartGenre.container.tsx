@@ -13,7 +13,12 @@ export default function ChartGenrePage() {
     
     const  fetchData = async () => {
         try {
-            const response = await axios.get(`http://localhost:8080/song/${router.asPath.replace('/chart/','')}`)
+            const token = localStorage.getItem('token');
+            const response = await axios.get(`http://localhost:8080/song/${router.asPath.replace('/chart/','')}`,{
+                headers: {
+                    Authorization: `${token}`
+                }
+            })
             setSongData(response.data)
             setNowData(response.data.slice(0,9))
         }catch (error){

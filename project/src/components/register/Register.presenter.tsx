@@ -25,7 +25,9 @@ export default function RegisterPageUI(props: IRegisterUIProps) {
                       <div className={`${styles.overlayPanel} ${styles.overlayRight}`}>
                         <h1 className={styles.h1}>Hello, Friend!</h1>
                         <p className={styles.p}>Enter your personal details and start journey with us</p>
-                        {props.isLogin && <button onClick={props.onClickLoginState} className={styles.buttonWhite} >Sign Up</button>}                       
+                        {props.isLogin ? <button onClick={props.onClickLoginState} className={styles.buttonWhite} >Sign Up</button>
+                        :<button onClick={props.onClickLoginState} className={styles.buttonWhite} >Sign In</button>
+                        }                       
                       </div>
                     </div>
                   </div>

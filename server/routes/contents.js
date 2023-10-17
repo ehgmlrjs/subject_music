@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const database = require('../db/database.config');
+const database = require('../config/database.config');
 
 router.get('/:index', async (req, res, next) => {
     let co;
