@@ -1,5 +1,5 @@
 import styles from './boardNew.module.css'
-import { Input, Modal, Button} from 'antd';
+import { Input, Modal} from 'antd';
 import DaumPostcode from 'react-daum-postcode';
 import { IBoardNewPageUIProps } from './boardNew.types';
 
@@ -46,7 +46,7 @@ export default function BoardNewPageUI(props:IBoardNewPageUIProps):JSX.Element{
                         )
                     }
                     <TextArea value={props.q3}  rows={1} />
-                    <TextArea placeholder='상세주소를 입력해주세요.' rows={1}/>
+                    <TextArea onChange={props.onChangeDetailadress} placeholder='상세주소를 입력해주세요.' rows={1} maxLength={70}/>
                 </div>
                 <div className={styles.boardSubmitContainer}>
                     <button className={styles.boardSubmitButton}>
