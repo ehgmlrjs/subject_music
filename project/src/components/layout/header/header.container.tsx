@@ -42,18 +42,18 @@ export default function HeaderPage(): JSX.Element {
                     Authorization: `${token}`
                 }
             });
-            console.log(response)
             switch (response.status) {
                 case (200):
                     alert('로그아웃 성공')
                     localStorage.removeItem('token');
-                    router.push('/')
+                    setTokenState('')
                     break;
                 case (201):
                     alert(response.data.message)
                     break;
                 case (202):
                     alert(response.data.message)
+                    localStorage.setItem('token',response.data.token)
                     break;
                 case (203):
                     alert(response.data.message)

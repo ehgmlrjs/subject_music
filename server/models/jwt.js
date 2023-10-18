@@ -34,5 +34,8 @@ module.exports = {
             }
         }
         return decoded;
+    },
+    decoded: async (token) =>{
+        return jwt.decode(token)
     }
 }
