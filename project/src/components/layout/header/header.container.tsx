@@ -47,6 +47,8 @@ export default function HeaderPage(): JSX.Element {
                 case (200):
                     alert('로그아웃 성공')
                     localStorage.removeItem('token');
+                    setTokenState('')
+                    console.log(token)
                     router.push('/')
                     break;
                 case (201):
