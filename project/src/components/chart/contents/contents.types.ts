@@ -1,5 +1,9 @@
+import { ChangeEvent } from "react";
+
 export interface IContentsPageUIProps {
     inputData : Song[];
+    onChangeComment : (event:ChangeEvent<HTMLInputElement>) => void;
+    onClickSubmit : () => void;
 }
 
 interface Song {
