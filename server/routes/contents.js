@@ -3,6 +3,8 @@ const router = express.Router();
 const database = require('../config/database.config');
 const boardCheck = require('../models/boardCheck');
 
+const authUtil = require('../middleware/auth').checkToken;
+
 router.get('/:index', async (req, res) => {
     let co;
     try {
@@ -44,7 +46,7 @@ router.post('/:index/board', async (req, res) => {
     }
 })
 
-router.post('/:index/boardUpdate', async (req, res) => {
+router.post('/:index/boardUpdate', authUtil, async (req, res) => {
     let co;
 
     try {
@@ -73,7 +75,7 @@ router.post('/:index/boardUpdate', async (req, res) => {
     }
 })
 
-router.post('/:index/boardDelete', async (req, res) => {
+router.post('/:index/boardDelete', authUtil, async (req, res) => {
     let co;
     try {
         const { nickname, comment } = req.body;

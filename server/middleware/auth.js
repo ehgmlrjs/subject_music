@@ -7,8 +7,8 @@ const authUtil = {
     checkToken: async (req, res, next) => {
         const token = req.headers.authorization;
 
-        if (!token) {
-            return res.status(201).json({ message: 'token x' })
+        if (token==='null') {
+            return res.status(201).json({ message: '로그인을 해 주세요' })
         }
         try {
             const data = await jwt.decoded(token);
@@ -17,10 +17,11 @@ const authUtil = {
 
             if (user === TOKEN_EXPIRED) {
                 const new_token = await jwt.sign({ email, nickname });
-                return res.status(202).json({
+                res.status(202).json({
                     message: '유효기간 만료',
                     token: new_token.token
                 })
+                next()
             } else if (user === TOKEN_INVALID) {
                 return res.status(203).json({ message: '유효하지 않은 토큰' });
             } next();

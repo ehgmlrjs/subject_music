@@ -3,8 +3,6 @@ const userRouter = require('./routes/user');
 const songRouter = require('./routes/song');
 const contentsRouter = require('./routes/contents');
 
-const authUtil = require('./middleware/auth').checkToken;
-
 const app = express();
 
 const port = process.env.PORT || 8080;
