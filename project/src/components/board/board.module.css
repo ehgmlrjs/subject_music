@@ -1,0 +1,95 @@
+.body{
+    display: flex;
+    justify-content: center;
+    background-image: linear-gradient(to bottom,#ffffff 30%,#eeaeca);
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+    margin-top: 150px;
+    margin-bottom: 100px;
+    padding: 50px 0;
+    gap: 30px;
+}
+
+.boardTopContainer {
+    display: flex;
+    align-items: center;
+    height: 100px;
+    padding: 10px 15px;
+    border-bottom: 2px solid white;
+}
+
+.boardSearchInput {
+    height: 40px;
+    width: 70%;
+    margin-right: 18%;
+    font-size: 15px;
+}
+
+.boardSearchButton {
+    width: 80px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: white;
+    cursor: pointer;
+}
+
+.boardContentContainer{
+    display: flex;
+    flex-direction: column;
+    height: 540px;
+    padding: 0 15px;
+}
+
+.boardContentInfo {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr 1fr;
+    gap: 5px;
+    align-items: center;
+    border-bottom: 1px solid white;
+}
+
+.boardContentInfoText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 0 20px 0;
+}
+
+.boardContentBox{
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr 1fr;
+    margin-top: 15px;
+    border-bottom: 1px solid white;
+}
+
+.boardContentText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 0 12px 0;
+}
+
+.boardPageNationContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.boardSubmitContainer{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.boardSubmitButton {
+    background-color: white;
+    border: white;
+    border-radius: 5px;
+    height: 40px;
+    width: 120px;
+    margin-right: 8%;
+    cursor: pointer;
+}
