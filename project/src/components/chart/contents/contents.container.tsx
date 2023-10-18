@@ -11,7 +11,7 @@ export default function ContentsPage() {
 
     const fetchData = async () => {
         try{
-            const response = await axios.get(`http://localhost:8080/contents/${router.asPath.replace('/contents/','')}`)
+            const response = await axios.get(`http://localhost:8080/contents/${parseInt(localStorage.getItem("index") || "")}`)
             setInputData(response.data)
         }catch(error){
             console.log('Error', error)

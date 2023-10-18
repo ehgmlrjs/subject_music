@@ -2,8 +2,6 @@ import { useRouter } from 'next/router'
 import ChartGenrePageUI from "./chartGenre.presenter";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import {useRecoilState} from 'recoil'
-import { genreState } from '@/src/store/states';
 
 export default function ChartGenrePage() {
     const router = useRouter()
