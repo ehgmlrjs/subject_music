@@ -2,17 +2,38 @@ import ContentsBoardsPageUI from "./contentsBoard.presenter";
 import { useState } from "react";
 import {useRecoilState} from 'recoil';
 import { nickState } from "@/src/store/states";
+import { IContentsBoardPageProps } from "./contents.types";
+import axios from "axios";
 
-export default function ContentsBoardPage():JSX.Element {
+export default function ContentsBoardPage(props:IContentsBoardPageProps):JSX.Element {
     const [localNick, setLocalNick] = useRecoilState(nickState)
 
-    // props.nick로 해당 댓글에대한 작성자를 불러온다(지금은 임시로).
-    const [nick, setNick] = useState('1715leekc')
+    const onClickBoardDelete = async () => {
+        try{
+            const token = localStorage.getItem('token')
+
+            const response = await axios.post(`http://localhost:8080/contents/${parseInt(localStorage.getItem("index") || "")}/boardDelete`,{
+            nickname : localNick,
+            comment : props.data.comment
+            },{
+                headers: {
+                    Authorization: `${token}`
+                }
+            })
+            if (response.status === 200){
+                alert(response.data.message)
+            }
+        }catch(error){
+            console.log('error', error)
+        }
+        
+    }
 
     return(
         <ContentsBoardsPageUI
             localNick={localNick}
-            nick = {nick}
+            data = {props.data}
+            onClickBoardDelete = {onClickBoardDelete}
          />
     )
 }

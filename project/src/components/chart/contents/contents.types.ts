@@ -4,6 +4,7 @@ export interface IContentsPageUIProps {
     inputData : Song[];
     onChangeComment : (event:ChangeEvent<HTMLInputElement>) => void;
     onClickSubmit : () => void;
+    boardData : Board[];
 }
 
 interface Song {
@@ -17,3 +18,8 @@ interface Song {
     lyrics : string;
 }
 
+interface Board {
+    Index : number;
+    comment : string;
+    nickname : string;
+}

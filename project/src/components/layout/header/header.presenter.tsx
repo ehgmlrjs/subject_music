@@ -18,7 +18,7 @@ export default function HeaderPageUI(props: IHeaderUIProps): JSX.Element {
                 props.token !== '' ?
                 <div className={styles.loginContainer}>
                     <div onClick={props.onClickLogout} className={styles.loginContent}>Logout</div>
-                    <div className={styles.loginContent}>MY</div>
+                    <div onClick={props.onClickMy} className={styles.loginContent}>MY</div>
                 </div>:
                 <div onClick={props.onClickLog} className={styles.loginContent}>Login</div>
                 }
