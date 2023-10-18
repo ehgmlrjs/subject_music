@@ -2,6 +2,8 @@ import { useRouter } from 'next/router'
 import ChartGenrePageUI from "./chartGenre.presenter";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import {useRecoilState} from 'recoil'
+import { genreState } from '@/src/store/states';
 
 export default function ChartGenrePage() {
     const router = useRouter()
@@ -13,7 +15,7 @@ export default function ChartGenrePage() {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get(`http://localhost:8080/song/${router.asPath.replace('/chart/', '')}`, {})
+            const response = await axios.get(`http://localhost:8080/song/${localStorage.getItem("genre") || ""}`, {})
             setSongData(response.data)
             setNowData(response.data.slice(0, 9))
         } catch (error) {
@@ -22,7 +24,7 @@ export default function ChartGenrePage() {
     }
 
     useEffect(() => {
-        setGenre(router.asPath.replace('/chart/', ''))
+        setGenre(localStorage.getItem("genre") || "")
         fetchData();
     }, [])
 
