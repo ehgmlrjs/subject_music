@@ -42,7 +42,6 @@ export default function RegisterPage(): JSX.Element {
                 email,
                 password,
             });
-            console.log(response)
             switch (response.status){
                 case (200):
                     setIsLogin((prev) => !prev)

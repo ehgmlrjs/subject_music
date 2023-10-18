@@ -45,7 +45,6 @@ export default function ContentsPage() {
                 nickname : localNick,
                 comment : comment,
             })
-            console.log(response)
         }catch(error){
             console.log('Error', error)
         }
