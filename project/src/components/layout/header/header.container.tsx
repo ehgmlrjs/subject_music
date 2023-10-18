@@ -43,7 +43,6 @@ export default function HeaderPage(): JSX.Element {
                     Authorization: `${token}`
                 }
             });
-            console.log(response)
             switch (response.status) {
                 case (200):
                     alert('로그아웃 성공')
@@ -58,6 +57,8 @@ export default function HeaderPage(): JSX.Element {
                     break;
                 case (202):
                     alert(response.data.message)
+                    localStorage.removeItem('token');
+                    setTokenState('')
                     break;
                 case (203):
                     alert(response.data.message)

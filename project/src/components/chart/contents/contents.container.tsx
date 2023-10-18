@@ -41,9 +41,9 @@ export default function ContentsPage() {
 
         /* 댓글을 보내는 api */
         try{
-            const response = await axios.post(`http://localhost:8080/contents/${parseInt(localStorage.getItem("index") || "")}/borad`,{
+            const response = await axios.post(`http://localhost:8080/contents/${parseInt(localStorage.getItem("index") || "")}/boardUpdate`,{
                 nickname : localNick,
-                comment,
+                comment : comment,
             })
             console.log(response)
         }catch(error){
