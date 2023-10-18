@@ -45,6 +45,14 @@ export default function ContentsPage() {
                 nickname : localNick,
                 comment : comment,
             })
+            switch (response.status){
+                case (200):
+                    alert(response.data.message)
+                    break;
+                case (201):
+                    alert(response.data.message)
+                    break;
+            }
             console.log(response)
         }catch(error){
             console.log('Error', error)

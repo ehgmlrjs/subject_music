@@ -8,9 +8,8 @@ async function signup(email, password, nickName) {
         const query = `INSERT INTO laproject.user (nickName, email, password) VALUES (?, ?, ?)`;
         const values = [nickName, email, password];
 
-        const [result] = await co.execute(query, values);
+        await co.execute(query, values);
         co.release();
-        return result;        
     }catch(error){
         return error
     }
