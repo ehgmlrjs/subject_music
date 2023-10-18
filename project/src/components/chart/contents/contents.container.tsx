@@ -30,9 +30,33 @@ export default function ContentsPage() {
         }
     }
 
+    const submitRecently = async () => {
+        try{
+            const token = localStorage.getItem('token')
+
+            const response = await axios.post(`http://localhost:8080/mypage/update`, {
+                nickname : localNick,
+                Index : parseInt(localStorage.getItem("index") || "")
+            },{
+                headers: {
+                    Authorization: `${token}`
+                }
+            })
+
+            if(response.status === 200){
+                console.log('전송성공')
+            }
+
+        }catch (error){
+            console.log('error', error)
+        }
+    }
+
+
     useEffect(() => {
         fetchData();
         fetchBoardData();
+        submitRecently();
     }, [])
 
     const onChangeComment = (event: ChangeEvent<HTMLInputElement>) => {
