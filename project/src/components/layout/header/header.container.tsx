@@ -1,9 +1,13 @@
 import { useRouter } from "next/router"
 import axios from "axios"
 import HeaderPageUI from "./header.presenter"
+import {useRecoilState} from 'recoil'
+import { tokenState } from "@/src/store/states"
 
 export default function HeaderPage(): JSX.Element {
     const router = useRouter();
+
+    const [token, setTokenState] = useRecoilState(tokenState)
 
     const onClickHome = () => {
         router.push('/')
@@ -70,6 +74,7 @@ export default function HeaderPage(): JSX.Element {
             onClickNews={onClickNews}
             onClickLog={onClickLog}
             onClickLogout={onClickLogout}
+            token = {token}
         />
     )
 }

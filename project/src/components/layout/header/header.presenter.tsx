@@ -15,7 +15,7 @@ export default function HeaderPageUI(props: IHeaderUIProps): JSX.Element {
                     <div onClick={props.onClickBoard} className={styles.menuContent}>BOARD</div>
                 </div>
                 {
-                0 ?
+                props.token ?
                 <div className={styles.loginContainer}>
                     <div onClick={props.onClickLogout} className={styles.loginContent}>Logout</div>
                     <div className={styles.loginContent}>MY</div>

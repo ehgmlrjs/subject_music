@@ -9,6 +9,9 @@ export default function BoardNewPage(props:IBOardNewPageProps):JSX.Element{
     const [q3, setQ3] = useState('')
     const [detailadress, setDetailadress] = useState('')
 
+    // true : 수정 , false : 등록
+    const [isEdit, setisEdit] = useState(props.isEdit)
+
     const onToggleModal = () => {
         console.log('sss')
         console.log(isOpen)

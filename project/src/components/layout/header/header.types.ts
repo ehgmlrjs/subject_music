@@ -6,4 +6,5 @@ export interface IHeaderUIProps {
     onClickBoard : () => void;
     onClickLog: ()=> void;
     onClickLogout: ()=> void;
+    token : string;
 }
