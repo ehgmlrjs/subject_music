@@ -1,6 +1,7 @@
 import styles from './contents.module.css'
 import {HeartOutlined} from '@ant-design/icons'
 import { IContentsPageUIProps } from './contents.types'
+import ContentsBoardPage from './contentsBoard/contentsBoard.container'
 
 export default function ContentsPageUI(props:IContentsPageUIProps):JSX.Element {
     return(
@@ -68,18 +69,11 @@ export default function ContentsPageUI(props:IContentsPageUIProps):JSX.Element {
                         댓글
                     </div>
                     <div className ={styles.boardTopContainer}>
-                        <input className={styles.boardInput} type='text' />
-                        <button className={styles.boardSubmitButton}>등록</button>
+                        <input onChange={props.onChangeComment} className={styles.boardInput} type='text' />
+                        <button onClick={props.onClickSubmit} className={styles.boardSubmitButton}>등록</button>
                     </div>
                     <div className={styles.boardBottomContainer}>
-                        <div className={styles.boardContentContainer}>
-                            <div className={styles.boardAuthor}>
-                                leekc3813
-                            </div>
-                            <div className={styles.boardContent}>
-                                정말 좋은 곡이에요!
-                            </div>
-                        </div>
+                        <ContentsBoardPage />
                     </div>
                 </div>
             </div>

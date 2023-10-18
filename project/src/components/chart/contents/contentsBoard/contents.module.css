@@ -1,0 +1,32 @@
+.boardContentContainer {
+    display: flex;
+    border-bottom: 1px solid lightgray;
+    height: 50px;
+}
+
+.boardAuthor {
+    display: flex;
+    align-items: center;
+    width: 20%;
+}
+
+.boardContent {
+    width: 70%;
+}
+
+.boardButton {
+    width: 50px;
+    height: 40px;
+    border: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.boardButton:hover{
+    transform: scale(1.1);
+}
+
+.boardButton:active{
+    transform: scale(1);
+}
