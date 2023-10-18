@@ -48,9 +48,9 @@ export default function ChartPageUI(props:ICartPageUIProps) {
                                     )
                                 })}
                             </div>
-                            <Link href="/chart/Hot" className={styles.hotPlus}>
+                            <div onClick={props.onClickPlusHot} className={styles.hotPlus}>
                                 더보기
-                            </Link>
+                            </div>
                         </div>
                         <div className={styles.hotBox}>
                             <div className={styles.hotTitle}>
@@ -75,9 +75,9 @@ export default function ChartPageUI(props:ICartPageUIProps) {
                                     )
                                 })}
                             </div>
-                            <Link href="/chart/pop" className={styles.hotPlus}>
+                            <div onClick={props.onClickPlusPop}  className={styles.hotPlus}>
                                 더보기
-                            </Link>
+                            </div>
                         </div>
                     </div>
                 </div>
