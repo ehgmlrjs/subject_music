@@ -34,6 +34,10 @@ export default function HeaderPage(): JSX.Element {
         router.push('/register')
     }
 
+    const onClickMy = () => {
+        router.push('/my')
+    }
+
 
     const onClickLogout = async () => {
         try {
@@ -79,6 +83,7 @@ export default function HeaderPage(): JSX.Element {
             onClickNews={onClickNews}
             onClickLog={onClickLog}
             onClickLogout={onClickLogout}
+            onClickMy = {onClickMy}
             token = {token}
         />
     )

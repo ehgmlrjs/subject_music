@@ -8,6 +8,7 @@ export default function ContentsPage() {
 
     const [inputData, setInputData] = useState([]);
     const [comment, setComment] = useState('');
+    const [boardData, setBoardData] = useState([]);
 
     const [localNick, setLocalNick] = useRecoilState(nickState);
 
@@ -23,7 +24,7 @@ export default function ContentsPage() {
     const fetchBoardData = async () => {
         try{
             const response =await axios.post(`http://localhost:8080/contents/${parseInt(localStorage.getItem("index") || "")}/board`)
-            console.log(response)
+            setBoardData(response.data)
         }catch(error){
             console.log('Error',error)
         }
@@ -70,6 +71,7 @@ export default function ContentsPage() {
             inputData={inputData.length > 0 ? inputData : []}
             onChangeComment={onChangeComment}
             onClickSubmit={onClickSubmit}
+            boardData = {boardData}
         />
     )
 }

@@ -42,16 +42,7 @@ export default function ContentsPageUI(props:IContentsPageUIProps):JSX.Element {
                                     <div className={styles.info}>
                                         {props.inputData[0]?.genre}
                                     </div>
-                                </div>
-                                <div className={styles.infoRow}>
-                                    <div className={styles.info}>
-                                        좋아요
-                                    </div>
-                                    <div className={styles.info}>
-                                        <HeartOutlined className={styles.like} />
-                                    </div>
-                                </div>
-                                
+                                </div>                             
                             </div>
                             
                         </div>
@@ -73,7 +64,15 @@ export default function ContentsPageUI(props:IContentsPageUIProps):JSX.Element {
                         <button onClick={props.onClickSubmit} className={styles.boardSubmitButton}>등록</button>
                     </div>
                     <div className={styles.boardBottomContainer}>
-                        <ContentsBoardPage />
+                        {props.boardData?.map((data) => {
+                            return(
+                                <ContentsBoardPage
+                                    key={data.comment}
+                                    data = {data}
+                                 />
+                            )
+                        })}
+                        
                     </div>
                 </div>
             </div>
