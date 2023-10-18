@@ -1,3 +1,4 @@
 export interface ICartPageUIProps {
-    onClickPlus : () => void;
+    onClickPlusPop : () => void;
+    onClickPlusHot : () => void;
 }
