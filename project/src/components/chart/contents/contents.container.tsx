@@ -1,51 +1,55 @@
 import ContentsPageUI from "./contents.presenter";
 import axios from "axios";
 import { ChangeEvent, useEffect, useState } from "react";
-import {useRecoilState} from 'recoil';
+import { useRecoilState } from 'recoil';
 import { nickState } from "@/src/store/states";
 
 export default function ContentsPage() {
 
     const [inputData, setInputData] = useState([]);
-    const [comment,setComment] = useState('');
+    const [comment, setComment] = useState('');
 
     const [localNick, setLocalNick] = useRecoilState(nickState);
 
     const fetchData = async () => {
-        try{
+        try {
             const response = await axios.get(`http://localhost:8080/contents/${parseInt(localStorage.getItem("index") || "")}`)
             setInputData(response.data)
-        }catch(error){
+        } catch (error) {
             console.log('Error', error)
         }
     }
 
     useEffect(() => {
         fetchData();
-    },[])
+    }, [])
 
-    const onChangeComment = (event:ChangeEvent<HTMLInputElement>) => {
+    const onChangeComment = (event: ChangeEvent<HTMLInputElement>) => {
         setComment(event.target.value)
         console.log(comment)
     }
 
     const onClickSubmit = async () => {
-        if (!localNick) {
-            alert('로그인을 해주세요.')
-            return;
-        }
-        if(!comment) {
+        if (!comment) {
             alert('댓글을 작성해주세요.')
             return;
-        } 
+        }
 
         /* 댓글을 보내는 api */
-        try{
-            const response = await axios.post(`http://localhost:8080/contents/${parseInt(localStorage.getItem("index") || "")}/boardUpdate`,{
-                nickname : localNick,
-                comment : comment,
+        try {
+            const token = localStorage.getItem('token');
+            const response = await axios.post(`http://localhost:8080/contents/${parseInt(localStorage.getItem("index") || "")}/boardUpdate`, {
+                nickname: localNick,
+                comment: comment,
+
+            }, {
+                headers: {
+                    Authorization: `${token}`
+                }
             })
-        }catch(error){
+            alert(response.data.message)
+            console.log(response)
+        } catch (error) {
             console.log('Error', error)
         }
 
@@ -54,8 +58,8 @@ export default function ContentsPage() {
     return (
         <ContentsPageUI
             inputData={inputData.length > 0 ? inputData : []}
-            onChangeComment = {onChangeComment}
-            onClickSubmit = {onClickSubmit}
-         />
+            onChangeComment={onChangeComment}
+            onClickSubmit={onClickSubmit}
+        />
     )
 }

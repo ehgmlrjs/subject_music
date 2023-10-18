@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const database = require('../config/database.config');
+const boardCheck = require('../models/boardCheck');
+
+const authUtil = require('../middleware/auth').checkToken;
 
 router.get('/:index', async (req, res) => {
     let co;
@@ -23,10 +26,10 @@ router.get('/:index', async (req, res) => {
     }
 })
 
-router.post('/:index/board', async(req,res) => {
+router.post('/:index/board', async (req, res) => {
     let co;
 
-    try{
+    try {
         const index = req.params.index;
         co = await database.getConnection();
         const query = 'SELECT * FROM laproject.board WHERE `Index`=?';
@@ -43,19 +46,27 @@ router.post('/:index/board', async(req,res) => {
     }
 })
 
-router.post('/:index/boardUpdate', async(req,res) => {
+router.post('/:index/boardUpdate', authUtil, async (req, res) => {
     let co;
 
-    try{
-        const {nickname,comment} = req.body;
+    try {
+        const { nickname, comment } = req.body;
         const index = req.params.index;
-        co = await database.getConnection();
-        const query = 'INSERT INTO laproject.board (`Index`,nickname, comment)  VALUES (?, ?, ?)';
-        const values = [index,nickname,comment];
+        if (!await boardCheck(index, nickname, comment)) {
+            co = await database.getConnection();
+            const query = 'INSERT INTO laproject.board (`Index`,nickname, comment)  VALUES (?, ?, ?)';
+            const values = [index, nickname, comment];
 
-        const [result] = await co.execute(query, values);
-        co.release();
-        return result;
+            await co.execute(query, values);
+            co.release();
+            return res.status(200).json({
+                message: '등록'
+            })
+        } else {
+            return res.status(201).json({
+                message: '이미 등록된 댓글'
+            })
+        }
     } catch (error) {
         console.error(error)
         return res.status(500).json({
@@ -64,18 +75,17 @@ router.post('/:index/boardUpdate', async(req,res) => {
     }
 })
 
-router.post('/:index/boardDelete', async(req,res) =>{
+router.post('/:index/boardDelete', authUtil, async (req, res) => {
     let co;
-    try{
-        const {nickname,comment} = req.body;
+    try {
+        const { nickname, comment } = req.body;
         const index = req.params.index;
         co = await database.getConnection();
         const query = 'DELETE FROM laproject.board WHERE `INDEX`=? AND nickname=? AND comment=?';
-        const values = [index,nickname,comment];
+        const values = [index, nickname, comment];
 
-        const [result] = await co.execute(query, values);
+        await co.execute(query, values);
         co.release();
-        return result;
     } catch (error) {
         console.error(error)
         return res.status(500).json({
