@@ -19,7 +19,6 @@ export default function ContentsPage() {
 
     useEffect(() => {
         fetchData();
-        console.log(inputData)
     },[])
 
     return (

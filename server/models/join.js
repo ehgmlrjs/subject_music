@@ -1,4 +1,4 @@
-const database = require('../db/database.config');
+const database = require('../config/database.config');
 
 async function signup(email, password, nickName) {
     let co;

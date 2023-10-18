@@ -5,4 +5,5 @@ export interface IHeaderUIProps {
     onClickNews: () => void;
     onClickBoard : () => void;
     onClickLog: ()=> void;
+    onClickLogout: ()=> void;
 }

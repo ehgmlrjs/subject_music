@@ -1,8 +1,9 @@
 const express = require('express');
-
 const userRouter = require('./routes/user');
 const songRouter = require('./routes/song');
 const contentsRouter = require('./routes/contents');
+
+const authUtil = require('./middleware/auth').checkToken;
 
 const app = express();
 
@@ -17,10 +18,10 @@ app.use('/song', songRouter);
 app.use('/contents', contentsRouter);
 
 app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).send('Something went wrong!');
-  });
-  
+  console.error(err.stack);
+  res.status(500).send('Something went wrong!');
+});
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });

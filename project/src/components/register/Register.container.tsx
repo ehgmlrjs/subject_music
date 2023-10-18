@@ -38,23 +38,31 @@ export default function RegisterPage(): JSX.Element {
                 password,
             });
             console.log(response)
-            if (response.status === 200) {
-                setIsLogin((prev) => !prev)
-                setNickName('')
-                setEmail('')
-                setPassword('')
-                alert('회원가입이 성공적으로 완료되었습니다.')
-            } else if (response.status == 201) {
-                alert('이미 존재하는 이메일입니다.')
-            } else if (response.status == 202) {
-                alert('이미 존재하는 닉네임입니다.')
-            } else if (response.status == 203) {
-                alert('잘못된 이메일 형식입니다.')
-            } else if (response.status == 204) {
-                alert('잘못된 닉네임 형식입니다')
-            } else if (response.status == 205) {
-                alert('잘못된 패스워드 형식입니다')
+            switch (response.status){
+                case (200):
+                    setIsLogin((prev) => !prev)
+                    setNickName('')
+                    setEmail('')
+                    setPassword('')
+                    alert('회원가입이 성공적으로 완료되었습니다.')
+                    break;
+                case (201):
+                    alert('이미 존재하는 이메일입니다.')
+                    break;
+                case (202):
+                    alert('이미 존재하는 닉네임입니다.')
+                    break;
+                case (203):
+                    alert('잘못된 이메일 형식입니다.')
+                    break;
+                case (204):
+                    alert('잘못된 닉네임 형식입니다.')
+                    break;
+                case (205):
+                    alert('잘못된 패스워드 형식입니다')
+                    break;
             }
+            
         } catch (error) {
             console.log('Error', error)
         }
@@ -66,21 +74,21 @@ export default function RegisterPage(): JSX.Element {
                 email,
                 password,
             });
+            
             switch (response.status){
                 case (200):
                     console.log(response)
                     alert('로그인 성공')
+                    localStorage.setItem('token',response.data.token);
                     router.push('/')
                     break;
                 case (201):
-                    console.log('이미 로그인되어 있습니다.')
-                    router.push('/')
-                    break;
-                case (401):
                     console.log('존재하지 않은 로그인 정보입니다.')
+                    alert('존재하지 않은 로그인 정보입니다.')
                     break;
                 default:
                     console.log('server error')
+
             }
         } catch (error) {
             console.log('Error', error)

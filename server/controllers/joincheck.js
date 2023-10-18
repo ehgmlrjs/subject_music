@@ -36,5 +36,5 @@ async function signupCheck(email, password, nickName){
 }
 
 module.exports = {
-    signupCheck
+    signupCheck,
 }

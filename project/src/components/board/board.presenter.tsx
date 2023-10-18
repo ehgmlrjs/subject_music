@@ -2,8 +2,8 @@ import styles from './board.module.css'
 import { Pagination } from 'antd';
 import { IBoardPageUIProps } from './board.types';
 
-export default function BoardPageUI(props:IBoardPageUIProps):JSX.Element {
-    return(
+export default function BoardPageUI(props: IBoardPageUIProps): JSX.Element {
+    return (
         <div className={styles.body}>
             <div className={styles.wrapper}>
                 <div className={styles.boardTopContainer}>
@@ -17,7 +17,7 @@ export default function BoardPageUI(props:IBoardPageUIProps):JSX.Element {
                         <div className={styles.boardContentInfoText}>작성자</div>
                         <div className={styles.boardContentInfoText}>날짜</div>
                     </div>
-                    <div className = {styles.boardContentBox}>
+                    <div className={styles.boardContentBox}>
                         <div className={styles.boardContentText}>asdas</div>
                         <div className={styles.boardContentText}>asdas</div>
                         <div className={styles.boardContentText}>asdas</div>
@@ -25,10 +25,10 @@ export default function BoardPageUI(props:IBoardPageUIProps):JSX.Element {
                     </div>
                 </div>
                 <div className={styles.boardPageNationContainer}>
-                        <Pagination 
-                            defaultCurrent={1} 
-                            total={50}
-                        />
+                    <Pagination
+                        defaultCurrent={1}
+                        total={50}
+                    />
                 </div>
                 <div className={styles.boardSubmitContainer}>
                     <button onClick={props.onClickBoardWrite} className={styles.boardSubmitButton}>게시물 등록하기</button>
