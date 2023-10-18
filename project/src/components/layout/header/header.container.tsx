@@ -53,7 +53,8 @@ export default function HeaderPage(): JSX.Element {
                     break;
                 case (202):
                     alert(response.data.message)
-                    localStorage.setItem('token',response.data.token)
+                    localStorage.removeItem('token');
+                    setTokenState('')
                     break;
                 case (203):
                     alert(response.data.message)
