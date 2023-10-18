@@ -31,6 +31,7 @@ router.post('/:index/board', async (req, res) => {
 
     try {
         const index = req.params.index;
+        console.log(index)
         co = await database.getConnection();
         const query = 'SELECT * FROM laproject.board WHERE `Index`=?';
         const values = [index];

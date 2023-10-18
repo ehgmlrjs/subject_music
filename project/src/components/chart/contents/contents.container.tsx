@@ -20,8 +20,18 @@ export default function ContentsPage() {
         }
     }
 
+    const fetchBoardData = async () => {
+        try{
+            const response =await axios.post(`http://localhost:8080/contents/${parseInt(localStorage.getItem("index") || "")}/board`)
+            console.log(response)
+        }catch(error){
+            console.log('Error',error)
+        }
+    }
+
     useEffect(() => {
         fetchData();
+        fetchBoardData();
     }, [])
 
     const onChangeComment = (event: ChangeEvent<HTMLInputElement>) => {
