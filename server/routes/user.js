@@ -64,15 +64,15 @@ router.post('/login', async (req, res, next) => {
   try {
     const { email, password } = req.body;
     const isValidLogin = await loginCheck(email, password); // 유효성 검사 false: 유효하지 않은 정보
-    const nick = isValidLogin[0].nickname;
-
+    
     // 사용자가 이미 인증되었는지 확인합니다 (세션이 존재하는 경우)
     if (!isValidLogin.length > 0) {
       // 로그인 유효성 검사
-      return res.status(401).json({
+      return res.status(201).json({
         message: '유효하지 않은 로그인 자격 증명입니다.'
       });
     } else {
+      const nick = isValidLogin[0].nickname;
       const jwtToken = await jwt.sign({email,nick});
       return res.status(200).json({
         message: '로그인 성공',
@@ -89,12 +89,12 @@ router.post('/login', async (req, res, next) => {
   }
 })
 
-router.post('/logout', authUtil, (req, res) => {
+router.post('/logout',authUtil, (req, res) => {
 
   try {
     return res.status(200).json({
       message: '로그아웃 성공'
-    });
+    })
   } catch (error) {
     console.error(error);
     return res.status(500).json({

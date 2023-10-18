@@ -1,6 +1,6 @@
-import {useRouter} from 'next/router'
+import { useRouter } from 'next/router'
 import ChartGenrePageUI from "./chartGenre.presenter";
-import {  useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 export default function ChartGenrePage() {
@@ -10,41 +10,36 @@ export default function ChartGenrePage() {
     const [songData, setSongData] = useState([])
     const [nowData, setNowData] = useState([])
     const [pagenation, setPagenation] = useState(1)
-    
-    const  fetchData = async () => {
+
+    const fetchData = async () => {
         try {
-            const token = localStorage.getItem('token');
-            const response = await axios.get(`http://localhost:8080/song/${router.asPath.replace('/chart/','')}`,{
-                headers: {
-                    Authorization: `${token}`
-                }
-            })
+            const response = await axios.get(`http://localhost:8080/song/${router.asPath.replace('/chart/', '')}`, {})
             setSongData(response.data)
-            setNowData(response.data.slice(0,9))
-        }catch (error){
+            setNowData(response.data.slice(0, 9))
+        } catch (error) {
             console.log('Error', error)
         }
     }
 
-    useEffect( () => {
-        setGenre(router.asPath.replace('/chart/',''))
+    useEffect(() => {
+        setGenre(router.asPath.replace('/chart/', ''))
         fetchData();
     }, [])
 
     useEffect(() => {
-        const tmp = songData.slice(pagenation*10 - 10, pagenation*10-1);
+        const tmp = songData.slice(pagenation * 10 - 10, pagenation * 10 - 1);
         setNowData(tmp);
     }, [pagenation]);
 
-    const handlePageChange = (page:number) => {
+    const handlePageChange = (page: number) => {
         setPagenation(page)
     }
 
     return (
         <ChartGenrePageUI
-            genre = {genre}
-            handlePageChange = {handlePageChange}
-            nowData = {nowData}
-         />
+            genre={genre}
+            handlePageChange={handlePageChange}
+            nowData={nowData}
+        />
     )
 }

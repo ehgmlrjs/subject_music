@@ -82,7 +82,7 @@ export default function RegisterPage(): JSX.Element {
                     localStorage.setItem('token',response.data.token);
                     router.push('/')
                     break;
-                case (401):
+                case (201):
                     console.log('존재하지 않은 로그인 정보입니다.')
                     alert('존재하지 않은 로그인 정보입니다.')
                     break;

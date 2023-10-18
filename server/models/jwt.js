@@ -6,9 +6,6 @@ const TOKEN_INVALID = -2;
 
 module.exports = {
     sign: async (user) => {
-        console.log(user)
-        console.log(user.email)
-        console.log(user.nick)
         const payload = {
             email: user.email,
             nickname: user.nick
