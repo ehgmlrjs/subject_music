@@ -3,7 +3,7 @@ import axios from "axios"
 import { useRouter } from "next/dist/client/router"
 import RegisterPageUI from "./Register.presenter"
 import {useRecoilState} from 'recoil'
-import { tokenState } from "@/src/store/states"
+import { tokenState, nickState } from "@/src/store/states"
 
 export default function RegisterPage(): JSX.Element {
     const router = useRouter();
@@ -14,6 +14,7 @@ export default function RegisterPage(): JSX.Element {
     const [isLogin, setIsLogin] = useState(true) /* 로그인창 true, 회원가입창 false (처음에는 로그인창 우측 signup 누르면 회원가입창)*/
 
     const [token, setToken] = useRecoilState(tokenState)
+    const [localNick, setLocalNick] = useRecoilState(nickState)
 
     /* 닉네임,이메일,패스워드 변경 */
     const onChangeNickName = (event: ChangeEvent<HTMLInputElement>) => {
@@ -85,6 +86,8 @@ export default function RegisterPage(): JSX.Element {
                     alert('로그인 성공')
                     localStorage.setItem('token',response.data.token);
                     setToken(response.data.token)
+                    localStorage.setItem('nick',response.data.nick);
+                    setLocalNick(response.data.nick)
                     router.push('/')
                     break;
                 case (201):

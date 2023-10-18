@@ -2,12 +2,13 @@ import { useRouter } from "next/router"
 import axios from "axios"
 import HeaderPageUI from "./header.presenter"
 import {useRecoilState} from 'recoil'
-import { tokenState } from "@/src/store/states"
+import { tokenState, nickState } from "@/src/store/states"
 
 export default function HeaderPage(): JSX.Element {
     const router = useRouter();
 
     const [token, setTokenState] = useRecoilState(tokenState)
+    const [localNick, setLocalNick] = useRecoilState(nickState)
 
     const onClickHome = () => {
         router.push('/')
@@ -47,6 +48,9 @@ export default function HeaderPage(): JSX.Element {
                     alert('로그아웃 성공')
                     localStorage.removeItem('token');
                     setTokenState('')
+                    localStorage.removeItem('nick');
+                    setLocalNick('')
+                    router.push('/')
                     break;
                 case (201):
                     alert(response.data.message)
