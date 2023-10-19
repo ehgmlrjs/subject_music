@@ -49,9 +49,15 @@ export default function BoardNewPageUI(props:IBoardNewPageUIProps):JSX.Element{
                     <TextArea onChange={props.onChangeDetailadress} placeholder='상세주소를 입력해주세요.' rows={1} maxLength={70}/>
                 </div>
                 <div className={styles.boardSubmitContainer}>
-                    <button className={styles.boardSubmitButton}>
-                        {props.isEdit ? '수정하기' : '등록하기' }
-                    </button>
+                        {props.isEdit ? 
+                            <button className={styles.boardSubmitButton}>
+                            '수정하기' 
+                            </button>
+                            : 
+                            <button className={styles.boardSubmitButton}>
+                            '등록하기'
+                            </button>
+                             }
                 </div> 
             </div>
         </div>
