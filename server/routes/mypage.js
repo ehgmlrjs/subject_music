@@ -1,6 +1,7 @@
 const express = require('express');
 const database = require('../config/database.config');
 const mypageCheck = require('../models/mypageCheck');
+const sort = require('../models/sort');
 
 const router = express.Router();
 
@@ -13,7 +14,7 @@ router.post('/', authUtil, async (req, res) => {
         const nickname = req.body;
 
         co = await database.getConnection();
-        const query = 'SELECT * FROM song WHERE `Index` in (SELECT `Index` FROM mypage WHERE nickname = ? ORDER BY song_date DESC LIMIT 5)';
+        const query = 'SELECT DISTINCT * FROM song WHERE `Index` in (SELECT `Index` FROM mypage WHERE nickname = ? ORDER BY song_date DESC';
         const values = [nickname];
 
         const [result] = await co.execute(query, values);
@@ -40,19 +41,17 @@ router.post('/update', authUtil, async (req, res) => {
             const query = 'INSERT INTO mypage VALUES (?,?,?)';
             const values = [Index, nickname, song_date]
 
-            const [result] = await co.execute(query, values);
+            await co.execute(query, values);
             co.release();
-            res.send(result)
-            return result;
         } else {
             const query = 'UPDATE mypage SET song_date = ? WHERE `Index` = ? AND nickname = ?';
             const values = [song_date, Index, nickname];
 
-            const [result] = await co.execute(query, values);
+            await co.execute(query, values);
             co.release();
-            res.send(result)
-            return result;
         }
+
+        sort(nickname);
 
 
     } catch (error) {
