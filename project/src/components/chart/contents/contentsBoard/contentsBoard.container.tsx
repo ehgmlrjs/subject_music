@@ -23,6 +23,10 @@ export default function ContentsBoardPage(props:IContentsBoardPageProps):JSX.Ele
             if (response.status === 200){
                 alert(response.data.message)
             }
+            if (response.status === 202){
+                console.log('asd')
+                localStorage.setItem('token',response.data.token)
+            }
         }catch(error){
             console.log('error', error)
         }
