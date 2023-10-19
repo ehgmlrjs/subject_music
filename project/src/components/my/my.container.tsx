@@ -2,10 +2,12 @@ import MyPageUI from "./my.presenter";
 import { useRecoilState } from "recoil";
 import { nickState } from "@/src/store/states";
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function MyPage() {
     const [localNick, setLocalNick] = useRecoilState(nickState)
+
+    const [data, setData] = useState([])
 
     const fetchData = async () => {
         try {
@@ -18,6 +20,7 @@ export default function MyPage() {
                     Authorization: `${token}`
                 }
             })
+            setData(response.data)
             console.log(response)
         }catch(error){
             console.log('error',error)
@@ -32,6 +35,7 @@ export default function MyPage() {
     return(
         <MyPageUI
             localNick = {localNick}
+            data = {data}
          />
     )
 }

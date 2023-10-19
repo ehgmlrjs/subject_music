@@ -21,7 +21,9 @@ export default function BoardPageUI(props: IBoardPageUIProps): JSX.Element {
                         <div className={styles.boardContentText}>asdas</div>
                         <div className={styles.boardContentText}>asdas</div>
                         <div className={styles.boardContentText}>asdas</div>
-                        <div className={styles.boardContentText}>asdas</div>
+                        <div className={styles.boardContentText}>
+                            2023-05-13
+                        </div>
                     </div>
                 </div>
                 <div className={styles.boardPageNationContainer}>

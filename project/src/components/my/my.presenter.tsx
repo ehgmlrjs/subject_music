@@ -20,17 +20,22 @@ export default function MyPageUI(props:IMyPageUIProps) {
                             앨범
                         </div>
                     </div>
-                    <div className={styles.contentBox}>
-                        <div className={styles.contentInner}>
-                            이미지
-                        </div>
-                        <div className={styles.contentInner}>
-                            곡이름 가수
-                        </div>
-                        <div className={styles.contentInner}>
-                            앨범이름
-                        </div>
-                    </div>
+                   
+                        {props.data.map((data) => {
+                            return(
+                                <div key={data.Index} className={styles.contentBox}>
+                                    <div className={styles.contentInner}>
+                                        <img src={data.image} className={styles.contentImg} alt='contentImg' />
+                                    </div>
+                                    <div className={styles.contentInner}>
+                                        {data.name} {data.singer}
+                                    </div>
+                                    <div className={styles.contentInner}>
+                                        {data.album}
+                                    </div>
+                                </div>   
+                            )
+                        })}
                 </div>
             </div>
         </div>

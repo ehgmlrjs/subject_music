@@ -3,6 +3,7 @@ const userRouter = require('./routes/user');
 const songRouter = require('./routes/song');
 const contentsRouter = require('./routes/contents');
 const mypageRouter = require('./routes/mypage');
+const boardRouter = require('./routes/board');
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use('/user', userRouter);
 app.use('/song', songRouter);
 app.use('/contents', contentsRouter);
 app.use('/mypage', mypageRouter);
+app.use('/board',boardRouter)
 
 app.use((err, req, res, next) => {
   console.error(err.stack);

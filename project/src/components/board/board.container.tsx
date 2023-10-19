@@ -8,7 +8,6 @@ export default function BoardPage() {
         router.push('/board/new')
     }
 
-
     return(
         <BoardPageUI
             onClickBoardWrite = {onClickBoardWrite}
