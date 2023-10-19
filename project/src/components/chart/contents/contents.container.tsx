@@ -9,6 +9,7 @@ export default function ContentsPage() {
     const [inputData, setInputData] = useState([]);
     const [comment, setComment] = useState('');
     const [boardData, setBoardData] = useState([]);
+    const [tmp , setTmp] = useState(0);
 
     const [localNick, setLocalNick] = useRecoilState(nickState);
 
@@ -16,6 +17,7 @@ export default function ContentsPage() {
         try {
             const response = await axios.get(`http://localhost:8080/contents/${parseInt(localStorage.getItem("index") || "")}`)
             setInputData(response.data)
+            setTmp((prev) => prev + 1)
         } catch (error) {
             console.log('Error', error)
         }
@@ -56,8 +58,13 @@ export default function ContentsPage() {
     useEffect(() => {
         fetchData();
         fetchBoardData();
-        submitRecently();
     }, [])
+    
+    useEffect(() => {
+        if(tmp == 1){
+            submitRecently();
+        }
+    },[inputData])
 
     const onChangeComment = (event: ChangeEvent<HTMLInputElement>) => {
         setComment(event.target.value)
