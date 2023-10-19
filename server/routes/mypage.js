@@ -13,7 +13,7 @@ router.post('/', authUtil, async (req, res) => {
         const nickname = req.body;
 
         co = await database.getConnection();
-        const query = 'SELECT * FROM mypage WHERE nickname = ?';
+        const query = 'SELECT * FROM mypage WHERE nickname = ? ORDER BY song_date DESC LIMIT 5';
         const values = [nickname];
 
         const [result] = await co.execute(query, values);

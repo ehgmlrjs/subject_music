@@ -17,11 +17,10 @@ const authUtil = {
 
             if (user === TOKEN_EXPIRED) {
                 const new_token = await jwt.sign({ email, nickname });
-                res.status(202).json({
+                return res.status(202).json({
                     message: '유효기간 만료',
                     token: new_token.token
                 })
-                next()
             } else if (user === TOKEN_INVALID) {
                 return res.status(203).json({ message: '유효하지 않은 토큰' });
             } next();

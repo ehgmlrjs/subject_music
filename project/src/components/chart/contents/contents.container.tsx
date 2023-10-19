@@ -48,6 +48,10 @@ export default function ContentsPage() {
             if(response.status === 200){
                 console.log('전송성공')
             }
+            if (response.status === 202){
+                console.log(response.data.message)
+                localStorage.setItem('token',response.data.token)
+            }
 
         }catch (error){
             console.log('error', error)
@@ -80,6 +84,7 @@ export default function ContentsPage() {
         /* 댓글을 보내는 api */
         try {
             const token = localStorage.getItem('token');
+            console.log(token)
             const response = await axios.post(`http://localhost:8080/contents/${parseInt(localStorage.getItem("index") || "")}/boardUpdate`, {
                 nickname: localNick,
                 comment: comment,
@@ -89,8 +94,14 @@ export default function ContentsPage() {
                     Authorization: `${token}`
                 }
             })
-            alert(response.data.message)
-            console.log(response)
+            if (response.status === 200){
+                alert(response.data.message);
+            }
+            if (response.status === 202){
+                alert(response.data.message);
+                const newToken = response.data.token;
+                localStorage.setItem('token',newToken);
+            }
         } catch (error) {
             console.log('Error', error)
         }
