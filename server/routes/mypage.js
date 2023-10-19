@@ -19,8 +19,7 @@ router.post('/', authUtil, async (req, res) => {
 
         const [result] = await co.execute(query, values);
         co.release();
-        res.send(result)
-        return result;
+        return res.send(result);
     } catch (error) {
         console.error(error)
         return res.status(500).json({

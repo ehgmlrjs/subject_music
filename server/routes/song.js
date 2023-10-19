@@ -15,8 +15,7 @@ router.get('/:name', async (req, res, next) => {
 
             const [result] = await co.execute(query);
             co.release();
-            res.send(result)
-            return result;
+            return res.send(result);
         } else {
             co = await database.getConnection();
             const query = `SELECT * FROM new_song WHERE genre like ? UNION SELECT * FROM steady_song WHERE genre like ?`;
@@ -24,8 +23,7 @@ router.get('/:name', async (req, res, next) => {
 
             const [result] = await co.execute(query, values);
             co.release();
-            res.send(result)
-            return result;
+            return res.send(result);
         }
     } catch (error) {
         console.error(error);
