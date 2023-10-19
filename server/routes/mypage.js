@@ -14,7 +14,7 @@ router.post('/', authUtil, async (req, res) => {
         const nickname = req.body;
 
         co = await database.getConnection();
-        const query = 'SELECT DISTINCT * FROM song WHERE `Index` in (SELECT `Index` FROM mypage WHERE nickname = ? ORDER BY song_date DESC';
+        const query = 'SELECT DISTINCT * FROM song WHERE `Index` in (SELECT `Index` FROM mypage WHERE nickname = ? ORDER BY song_date DESC)';
         const values = [nickname];
 
         const [result] = await co.execute(query, values);
