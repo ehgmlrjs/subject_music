@@ -5,7 +5,7 @@ async function mypageCheck(Index, nickname) {
     try {
         co = await database.getConnection();
         const query = 'SELECT * FROM mypage WHERE `Index` = ? AND nickname = ?';
-        const values = [Index, nickname, comment];
+        const values = [Index, nickname];
 
         const [result] = await co.execute(query, values);
         co.release();

@@ -33,20 +33,20 @@ router.post('/update', authUtil, async (req, res) => {
 
     try {
         const { Index, nickname } = req.body;
-        const Date = new Date();
+        const song_date = new Date();
 
         co = await database.getConnection();
-        if (mypageCheck(Index, nickname)) {
-            const query = 'INSERT INTO mypage (?,?,?)';
-            const values = [Index, nickname, Date]
+        if (!await mypageCheck(Index, nickname)) {
+            const query = 'INSERT INTO mypage VALUES (?,?,?)';
+            const values = [Index, nickname, song_date]
 
             const [result] = await co.execute(query, values);
             co.release();
             res.send(result)
             return result;
         } else {
-            const query = 'UPDATE mypage SET time = ? WHERE `Index` = ? AND nickname = ?';
-            const values = [Date, Index, nickname];
+            const query = 'UPDATE mypage SET song_date = ? WHERE `Index` = ? AND nickname = ?';
+            const values = [song_date, Index, nickname];
 
             const [result] = await co.execute(query, values);
             co.release();
