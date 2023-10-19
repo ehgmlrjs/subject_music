@@ -7,7 +7,10 @@ export interface IBoardNewPageUIProps {
     q1 : string;
     q3 : string;
     isEdit : boolean;
+    onClickSubmit : () => void;
     onChangeDetailadress : (event:ChangeEvent<HTMLTextAreaElement>) => void;
+    onChangeTitle : (event:ChangeEvent<HTMLTextAreaElement>) => void;
+    onChangecontent :  (event:ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
 export interface IBOardNewPageProps {

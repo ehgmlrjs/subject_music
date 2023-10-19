@@ -17,13 +17,13 @@ export default function BoardNewPageUI(props:IBoardNewPageUIProps):JSX.Element{
                     <div className={styles.boardContentTitle}>
                         제목
                     </div>
-                    <TextArea rows={1} placeholder='제목을 작성해주세요.' />
+                    <TextArea onChange={props.onChangeTitle} rows={1} placeholder='제목을 작성해주세요.' />
                 </div>
                 <div className={styles.boardContentContainer}>
                     <div className={styles.boardContentTitle}>
                         내용
                     </div>
-                    <TextArea rows={18} placeholder='내용을 작성해주세요.' />
+                    <TextArea onChange={props.onChangecontent} rows={18} placeholder='내용을 작성해주세요.' />
                 </div>
                 <div className={styles.boardContentContainer}>
                     <div className={styles.boardContentTitle}>
@@ -51,11 +51,11 @@ export default function BoardNewPageUI(props:IBoardNewPageUIProps):JSX.Element{
                 <div className={styles.boardSubmitContainer}>
                         {props.isEdit ? 
                             <button className={styles.boardSubmitButton}>
-                            '수정하기' 
+                            수정하기
                             </button>
                             : 
-                            <button className={styles.boardSubmitButton}>
-                            '등록하기'
+                            <button onClick={props.onClickSubmit}  className={styles.boardSubmitButton}>
+                            등록하기
                             </button>
                              }
                 </div> 

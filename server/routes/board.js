@@ -31,12 +31,15 @@ router.post('/update', async (req,res) => {
         const {title, nickname, content, address1, address2, address3} = req.body;
         const board_date = new Date();
         co = await database.getConnection();
-        query = 'INSERT INTO board_content (title, nickname, content, address1, address2, address3,board_date) (?,?,?,?,?,?,?))';
+        query = 'INSERT INTO board_content (title, nickname, content, address1, address2, address3,board_date) values (?,?,?,?,?,?,?)';
         values = [title, nickname, content, address1, address2, address3, board_date];
 
         const [result] = await co.execute(query,values);
         co.release();
-        return res.send(result);
+        
+        return res.status(200).json({
+            message : '성공'
+        })
     } catch (error) {
         console.error(error);
         return res.status(500).json({
