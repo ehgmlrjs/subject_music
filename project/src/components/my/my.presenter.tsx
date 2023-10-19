@@ -1,11 +1,12 @@
 import styles from './my.module.css'
+import { IMyPageUIProps } from './my.types'
 
-export default function MyPageUI() {
+export default function MyPageUI(props:IMyPageUIProps) {
     return(
         <div className={styles.body}>
             <div className={styles.wrapper}>
                 <div className={styles.author}>
-                    희건님이 최근 감상한 음악.
+                    {props.localNick}님이 최근 감상한 음악.
                 </div>
                 <div className={styles.contentContainer}>
                     <div className={styles.contentInfoConainer}>
