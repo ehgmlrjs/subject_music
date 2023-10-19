@@ -6,14 +6,11 @@ const router = express.Router();
 router.post('/', async (req, res) => {
     let co;
     try {
-        // type = [board_date,id,like]
-        // const type = req.body;
-        const type = board_date;
         co = await database.getConnection();
-        query = 'SELECT * FROM board_content ORDER BY ?';
-        values = [type];
+        query = 'SELECT * FROM board_content';
 
-        const [result] = await co.execute(query, values);
+        const [result] = await co.execute(query);
+        console.log(result)
         co.release();
         return res.send(result);
     } catch (error) {

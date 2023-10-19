@@ -17,14 +17,16 @@ export default function BoardPageUI(props: IBoardPageUIProps): JSX.Element {
                         <div className={styles.boardContentInfoText}>작성자</div>
                         <div className={styles.boardContentInfoText}>날짜</div>
                     </div>
-                    <div className={styles.boardContentBox}>
-                        <div className={styles.boardContentText}>asdas</div>
-                        <div className={styles.boardContentText}>asdas</div>
-                        <div className={styles.boardContentText}>asdas</div>
-                        <div className={styles.boardContentText}>
-                            2023-05-13
-                        </div>
-                    </div>
+                    {props.data.map((data) => {
+                        return (
+                            <div key={data.id} className={styles.boardContentBox}>
+                                <div className={styles.boardContentText}>{data.id}</div>
+                                <div className={styles.boardContentText}>{data.title}</div>
+                                <div className={styles.boardContentText}>{data.nickname}</div>
+                                <div className={styles.boardContentText}>{data.board_date.slice(0, 10)}</div>
+                            </div>
+                        )
+                    })}
                 </div>
                 <div className={styles.boardPageNationContainer}>
                     <Pagination

@@ -1,3 +1,16 @@
 export interface IBoardPageUIProps {
-    onClickBoardWrite : () => void
+    onClickBoardWrite : () => void;
+    data : Data[];
+}
+
+interface Data {
+    address1 : string;
+    address2 : string;
+    address3 : string;
+    board_date : string;
+    content : string;
+    id : number;
+    like : number;
+    nickname : string;
+    title : string;
 }
