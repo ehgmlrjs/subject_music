@@ -2,6 +2,7 @@ const express = require('express');
 const userRouter = require('./routes/user');
 const songRouter = require('./routes/song');
 const contentsRouter = require('./routes/contents');
+const mypageRouter = require('./routes/mypage');
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.use(express.json());
 app.use('/user', userRouter);
 app.use('/song', songRouter);
 app.use('/contents', contentsRouter);
+app.use('/mypage', mypageRouter);
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
