@@ -72,9 +72,11 @@ router.post('/delete', authUtil, async (req, res) => {
 
 router.post('/search', authUtil, async (req, res) => {
     try {
+        const {search} = req.body;
+
         const co = await database.getConnection();
-        query = '';
-        values = [];
+        query = 'SELECT * FROM board_content WHERE title LIKE ? OR content LIKE ?';
+        values = [`%${search}%`,`%${search}%`];
 
         const [result] = await co.execute(query, values);
         co.release();
