@@ -91,24 +91,5 @@ router.post('/search', authUtil, async (req, res) => {
     }
 })
 
-router.post('/content/:id', authUtil, async (req, res) => {
-    try {
-        const id = req.params.id;
-
-        const co = await database.getConnection();
-        const query = 'SELECT * FROM board_content WHERE id = ?';
-        const values = [id];
-
-        const [result] = await co.execute(query, values);
-        co.release();
-
-        return res.send(result)
-    } catch (error) {
-        console.error(error);
-        return res.status(500).json({
-            message: 'Internal server error'
-        })
-    }
-})
 
 module.exports = router;
