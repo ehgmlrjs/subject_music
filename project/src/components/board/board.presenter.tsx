@@ -18,7 +18,7 @@ export default function BoardPageUI(props: IBoardPageUIProps): JSX.Element {
                         <div className={styles.boardContentInfoText}>작성자</div>
                         <div className={styles.boardContentInfoText}>날짜</div>
                     </div>
-                    {props.data.map((data) => {
+                    {props.nowData.map((data) => {
                         return (
                             <BoardDetailPage
                                  key={data.id}
@@ -31,6 +31,7 @@ export default function BoardPageUI(props: IBoardPageUIProps): JSX.Element {
                     <Pagination
                         defaultCurrent={1}
                         total={50}
+                        onChange={props.handlePageChange}
                     />
                 </div>
                 <div className={styles.boardSubmitContainer}>
