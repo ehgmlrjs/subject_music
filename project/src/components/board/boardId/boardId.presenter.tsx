@@ -36,7 +36,7 @@ export function BoardIdPageUI(props:BoardIdPageUIProps):JSX.Element {
                 <button onClick={props.onClickList}  className={styles.moveButton}>
                     목록으로
                 </button>
-                <button className={styles.moveButton}>
+                <button onClick={props.onCLickEdit} className={styles.moveButton}>
                     수정하기
                 </button>
             </div>

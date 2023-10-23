@@ -11,6 +11,7 @@ export interface IBoardNewPageUIProps {
     onChangeDetailadress : (event:ChangeEvent<HTMLTextAreaElement>) => void;
     onChangeTitle : (event:ChangeEvent<HTMLTextAreaElement>) => void;
     onChangecontent :  (event:ChangeEvent<HTMLTextAreaElement>) => void;
+    onClickSubmitEdit : () => void;
 }
 
 export interface IBOardNewPageProps {

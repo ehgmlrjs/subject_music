@@ -50,7 +50,7 @@ export default function BoardNewPageUI(props:IBoardNewPageUIProps):JSX.Element{
                 </div>
                 <div className={styles.boardSubmitContainer}>
                         {props.isEdit ? 
-                            <button className={styles.boardSubmitButton}>
+                            <button onClick={props.onClickSubmitEdit} className={styles.boardSubmitButton}>
                             수정하기
                             </button>
                             : 

@@ -8,6 +8,7 @@ export interface BoardIdPageUIProps {
     onClickSubmitContent : () => void;
     content : string;
     chatData : ChatData[];
+    onCLickEdit : () => void;
 }
 
 interface Data {

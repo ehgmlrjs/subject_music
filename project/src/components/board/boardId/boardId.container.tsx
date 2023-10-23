@@ -27,7 +27,7 @@ export default function BoardIdPage():JSX.Element {
             }
         })
 
-        console.log(responseChat)
+        console.log(response.data)
 
         setData(response.data)
         setChatData(responseChat.data)
@@ -47,6 +47,10 @@ export default function BoardIdPage():JSX.Element {
 
     const onClickList = () => {
         router.push('/board')
+    }
+
+    const onCLickEdit = () => {
+        router.push(`/board/${localStorage.getItem('boardIndex')}/edit`)
     }
 
     const onClickSubmitContent = async () => {
@@ -85,6 +89,7 @@ export default function BoardIdPage():JSX.Element {
             onClickSubmitContent = {onClickSubmitContent}
             content = {content}
             chatData = {chatData}
+            onCLickEdit = {onCLickEdit}
          />
     )
 }
