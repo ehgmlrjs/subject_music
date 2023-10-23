@@ -49,6 +49,7 @@ export default function BoardNewPage(props:IBOardNewPageProps):JSX.Element{
 
     const onClickSubmit = async () => {
         try{
+            const token = localStorage.getItem('token');
             const response = await axios.post('http://localhost:8080/board/update',{
                 title ,
                 nickname : localNick,
@@ -56,12 +57,20 @@ export default function BoardNewPage(props:IBOardNewPageProps):JSX.Element{
                 address1 : q1,
                 address2 : q3,
                 address3 : detailadress,
+            },{
+                headers: {
+                    Authorization: `${token}`
+                }
             })
 
             if (response.status === 200) {
                 console.log(response.data.message)
                 router.push('/board')
+            } else if (response.status === 202) {
+                console.log(response.data.message)
+                localStorage.setItem('token',response.data.token)
             }
+
             
 
         }catch(error){

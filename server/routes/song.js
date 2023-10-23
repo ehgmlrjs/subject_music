@@ -7,7 +7,7 @@ const transKo = require('../models/transKo');
 router.get('/:name', async (req, res, next) => {
     let co;
     try {
-        const di = { 'pop': 'global_today', 'Hot': 'top100' }
+        const di = { 'pop': 'global_today', 'hot': 'top100' }
         const type = transKo(req.params.name);
         if (type in di) {
             co = await database.getConnection();
