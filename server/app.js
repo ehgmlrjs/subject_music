@@ -1,4 +1,5 @@
 const express = require('express');
+const indexRouter = require('./routes/index');
 const userRouter = require('./routes/user');
 const songRouter = require('./routes/song');
 const contentsRouter = require('./routes/contents');
@@ -15,6 +16,7 @@ const cors = require("cors");
 app.use(cors());
 app.use(express.json());
 
+app.use('/', indexRouter);
 app.use('/user', userRouter);
 app.use('/song', songRouter);
 app.use('/contents', contentsRouter);
