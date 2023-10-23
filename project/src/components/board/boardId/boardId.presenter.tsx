@@ -1,6 +1,7 @@
 import { BoardIdPageUIProps } from './board.types';
 import styles from './boardId.module.css'
 import { Rate, Input } from 'antd';
+import {CloseOutlined, EditOutlined} from '@ant-design/icons'
 
 export function BoardIdPageUI(props:BoardIdPageUIProps):JSX.Element {
     const { TextArea } = Input;
@@ -45,6 +46,24 @@ export function BoardIdPageUI(props:BoardIdPageUIProps):JSX.Element {
                 </div>
                 <Rate style={{marginBottom : '30px'}} defaultValue={0} onChange={props.onChangeRate}/>
                 <TextArea rows={5} placeholder='개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 게시자에게 있습니다.' maxLength={100} />
+                <div className={styles.submitButtonContainer}>
+                    <button className={styles.submitButton}>등록하기</button>
+                </div>
+            </div>
+            <div className={styles.boardContentContainer}>
+                <div className={styles.boardContentTop}>
+                    <div className={styles.boardContentId}>
+                        1715leekc
+                    </div>
+                    <Rate disabled defaultValue={2} />
+                    <div className={styles.boardIconContainer}>
+                        <CloseOutlined className={styles.boardIcon} />
+                        <EditOutlined className={styles.boardIcon} />
+                    </div>
+                </div>
+                <div className={styles.boardContentBox}>
+                    정말 환영합니다 잘지내봐요
+                </div>
             </div>
         </div>
     )
