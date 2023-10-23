@@ -35,7 +35,7 @@ router.post('/:id/update', authUtil, async (req, res) => {
         const board_date = new Date();
 
         const co = await database.getConnection();
-        const query = `UPDATE board_content SET (title=?, content=?, address1=?, address2=?, address3=?, board_date=?)
+        const query = `UPDATE board_content SET title=?, content=?, address1=?, address2=?, address3=?, board_date=?
         WHERE id=?`;
         const values = [title, content, address1, address2, address3, board_date, id];
 

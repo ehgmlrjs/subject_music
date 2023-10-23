@@ -1,5 +1,9 @@
+import { ChangeEvent } from "react";
+
 export interface IBoardPageUIProps {
     onClickBoardWrite : () => void;
+    onChangeSearch : (event:ChangeEvent<HTMLInputElement>) => void;
+    onClickSearch : () => void;
     data : Data[];
 }
 

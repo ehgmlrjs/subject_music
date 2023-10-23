@@ -78,6 +78,31 @@ export default function BoardNewPage(props:IBOardNewPageProps):JSX.Element{
         }
     }
 
+    const onClickSubmitEdit = async () => {
+        try{
+            const token = localStorage.getItem('token');
+            const response = await axios.post(`http://localhost:8080/board/content/${localStorage.getItem('boardIndex')}/update`,{
+                title ,
+                content,
+                address1 : q1,
+                address2 : q3,
+                address3 : detailadress,
+            },{
+                headers: {
+                    Authorization: `${token}`
+                }
+            })
+
+            if (response.status === 200) {
+                console.log(response.data.message)
+                router.push('/board')
+            }      
+
+        }catch(error){
+            console.log('error',error)
+        }
+    }
+
     return(
         <BoardNewPageUI
             isOpen = {isOpen}
@@ -90,6 +115,7 @@ export default function BoardNewPage(props:IBOardNewPageProps):JSX.Element{
             onChangeTitle = {onChangeTitle}
             onChangecontent = {onChangecontent}
             onClickSubmit = {onClickSubmit}
+            onClickSubmitEdit = {onClickSubmitEdit}
          />
     )
 }
