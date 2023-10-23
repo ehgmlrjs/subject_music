@@ -1,0 +1,105 @@
+.body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper {
+    width: 65%;
+    height: 95vh;
+    margin-top: 150px;
+    margin-bottom: 20px;
+    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.2);
+    padding: 60px 80px;
+    display: flex;
+    flex-direction: column;
+}
+
+.infoContainer {
+    width: 100%;
+    height: 17%;
+    border-bottom: 1px solid lightgray;
+    margin-bottom: 80px;
+}
+
+.author {
+    font-size: 35px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.date {
+    font-size: 18px;
+    color: lightgray;
+    margin-bottom: 5px;
+}
+
+.address{
+    font-size: 16px;
+    color: lightgray;
+}
+
+.contentContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+.contentTitle{
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 50px;
+}
+
+.contentText{
+    font-size: 20px;
+    height: 265px;
+    overflow: hidden;
+}
+
+.imgcontainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.greetImg {
+    width: 180px;
+    height: 180px;
+}
+
+.moveButtonContainer{
+    width: 65%;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid lightgray;
+    margin-bottom: 50px;
+}
+
+.moveButton {
+    width: 180px;
+    height: 52px;
+    cursor: pointer;
+}
+
+.moveButton:first-child {
+    margin-right: 50px;
+}
+
+.boardContainer{
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 50px;
+    padding: 60px 0px;
+}
+
+.writeContainer {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid lightgray;
+    height: 160px;
+    margin-top: 30px;
+}
