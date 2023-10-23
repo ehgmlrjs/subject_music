@@ -5,6 +5,7 @@ const contentsRouter = require('./routes/contents');
 const mypageRouter = require('./routes/mypage');
 const boardRouter = require('./routes/board');
 const boardContentRouter = require('./routes/board_content');
+const boardChatRouter = require('./routes/board_chat');
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use('/contents', contentsRouter);
 app.use('/mypage', mypageRouter);
 app.use('/board',boardRouter)
 app.use('/board/content',boardContentRouter)
+app.use('/board/chat',boardChatRouter)
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
