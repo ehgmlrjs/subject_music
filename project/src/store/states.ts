@@ -19,3 +19,8 @@ export const indexState = atom({
     key : 'indexState',
     default : 0,
 })
+
+export const boardIndexState = atom ({
+    key : 'boardIndexState',
+    default : 0,
+})

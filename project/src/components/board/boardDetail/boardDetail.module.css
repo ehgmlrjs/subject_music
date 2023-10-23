@@ -1,0 +1,14 @@
+.boardContentBox{
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr 1fr;
+    margin-top: 15px;
+    border-bottom: 1px solid white;
+    cursor: pointer;
+}
+
+.boardContentText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 0 12px 0;
+}

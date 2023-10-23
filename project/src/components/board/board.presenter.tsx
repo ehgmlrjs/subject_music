@@ -1,6 +1,7 @@
 import styles from './board.module.css'
 import { Pagination } from 'antd';
 import { IBoardPageUIProps } from './board.types';
+import BoardDetailPage from './boardDetail/boardDetail.container';
 
 export default function BoardPageUI(props: IBoardPageUIProps): JSX.Element {
     return (
@@ -19,12 +20,10 @@ export default function BoardPageUI(props: IBoardPageUIProps): JSX.Element {
                     </div>
                     {props.data.map((data) => {
                         return (
-                            <div key={data.id} className={styles.boardContentBox}>
-                                <div className={styles.boardContentText}>{data.id}</div>
-                                <div className={styles.boardContentText}>{data.title}</div>
-                                <div className={styles.boardContentText}>{data.nickname}</div>
-                                <div className={styles.boardContentText}>{data.board_date.slice(0, 10)}</div>
-                            </div>
+                            <BoardDetailPage
+                                 key={data.id}
+                                 data = {data} 
+                            />
                         )
                     })}
                 </div>

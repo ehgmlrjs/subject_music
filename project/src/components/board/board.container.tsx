@@ -17,6 +17,7 @@ export default function BoardPage() {
         try{
             const response = await axios.post('http://localhost:8080/board/')
             setData(response.data)
+            console.log(response.data)
         }catch (error){
             console.log('error', error)
         }  
