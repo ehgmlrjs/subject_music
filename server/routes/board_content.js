@@ -28,16 +28,16 @@ router.post('/:id', authUtil, async (req, res) => {
 })
 
 
-router.post('/:id/update', async (req, res) => {
+router.post('/:id/update', authUtil, async (req, res) => {
     try {
         const id = req.params.id;
-        const { title, nickname, content, address1, address2, address3 } = req.body;
+        const { title, content, address1, address2, address3 } = req.body;
         const board_date = new Date();
 
         const co = await database.getConnection();
         const query = `UPDATE board_content SET (title=?, content=?, address1=?, address2=?, address3=?, board_date=?)
-        WHERE id=? AND nickname = ?`;
-        const values = [title, content, address1, address2, address3, board_date, id, nickname];
+        WHERE id=?`;
+        const values = [title, content, address1, address2, address3, board_date, id];
 
         await co.execute(query, values);
         co.release();
@@ -51,6 +51,27 @@ router.post('/:id/update', async (req, res) => {
             message: 'Internal server error'
         })
     }
+})
+
+router.post('/:id/delete', authUtil, async (req, res) => {
+    try {
+        const id = req.params.id;
+
+        const co = await database.getConnection();
+        const query = `DELETE FROM board_content WHERE id = ?`;
+        const values = [id];
+
+        await co.execute(query, values);
+        co.release();
+        return res.status(200).json({
+            message: '성공'
+        })
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({
+            message: 'Internal server error'
+        })
+     }
 })
 
 
