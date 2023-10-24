@@ -32,7 +32,7 @@ router.post('/:id/update', authUtil, async (req, res) => {
         const chat_date = new Date();
 
         const co = await database.getConnection();
-        const query = `INSERT INTO board_chat VALUES (?, ?, ?, ?, ?)`;
+        const query = `INSERT INTO board_chat (id, nickname, content, chat_date, star) VALUES (?, ?, ?, ?, ?)`;
         const values = [id, nickname, content, chat_date, star];
 
         await co.execute(query, values);
@@ -40,6 +40,30 @@ router.post('/:id/update', authUtil, async (req, res) => {
         return res.status(200).json({
             message: '성공'
         })
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({
+            message: 'Internal server error'
+        })
+    }
+})
+
+router.post('/:id/edit', authUtil, async (req, res) => {
+    try {
+        const id = req.params.id;
+        const { chat_id, content, star } = req.body;
+        const chat_date = new Date();
+
+        const co = await database.getConnection();
+        const query = `UPDATE board_chat SET content=?, chat_date=?, star=? WHERE chat_id = ?`;
+        const values = [content, chat_date, star, chat_id];
+
+        await co.execute(query, values);
+        co.release();
+        return res.status(200).json({
+            message: '성공'
+        })
+
     } catch (error) {
         console.error(error);
         return res.status(500).json({
